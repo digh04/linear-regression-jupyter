@@ -12,7 +12,7 @@ I want you to create enhanced notebooks and scripts using python and R by editin
 
 ## 2. Implement ai/ enhancements
 
-Enhance ai/ in place and update ai/readme.md. Don't overwrite manual README.
+Enhance ai/ in place and update ai/README_AI.md. Don't overwrite manual README.
 
 ---
 

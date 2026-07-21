@@ -42,7 +42,7 @@ The **`ai/`** implementation is the strongest part of the PR: it meets the Assig
 | Notebook markdown: interpretation | Yes | Yes | `manual/` embeds hard-coded numeric examples |
 | Use `7030_class_2` kernels | Yes | Yes | Notebook metadata present |
 | Renamed to `linear_model_*` | Yes | Yes | |
-| Updated readme in `ai/` | Yes | N/A | `ai/readme.md` reflects new workflow |
+| Updated readme in `ai/` | Yes | N/A | `ai/README_AI.md` reflects new workflow |
 
 **Verdict:** Assignment 3 functional goals are **met**, especially in **`ai/`**.
 
@@ -78,7 +78,7 @@ Python and R agree on all four metrics. PNG files are written to the working dir
 - Interpretation section correctly cautions that the intercept at zero years is **extrapolation** outside the observed x-range.
 - Kernels target **`7030_class_2`** / **`ir_7030_class_2`** as required.
 
-### `ai/readme.md`
+### `ai/README_AI.md`
 
 - Accurately documents filenames, commands, outputs, and expected approximate results.
 - Workflow diagram matches the current file layout.
@@ -163,7 +163,7 @@ For grading, **`ai/`** is the reference implementation. **`manual/`** satisfies 
 
 **Approve with minor follow-ups.**
 
-The PR successfully delivers Assignment 3 enhancements: renamed artifacts, required statistics, annotated plots, PNG outputs, and updated `ai/readme.md`. The **`ai/`** folder is merge-ready.
+The PR successfully delivers Assignment 3 enhancements: renamed artifacts, required statistics, annotated plots, PNG outputs, and updated `ai/README_AI.md`. The **`ai/`** folder is merge-ready.
 
 Before or immediately after merge, address:
 
@@ -206,7 +206,7 @@ Rscript linear_model.R ../manual/regression_data.csv YearsExperience Salary
 
 **Modified**
 
-- `ai/readme.md`
+- `ai/README_AI.md`
 
 **Not in diff but still present (stale)**
 
