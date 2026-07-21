@@ -1,6 +1,6 @@
-# Assignment 2: Linear Regression in Python and R
+# Assignment 3: Linear Regression in Python and R
 
-This project performs a simple linear regression analysis on `regression_data.csv`, modeling **Salary** as a function of **YearsExperience**. The same workflow is implemented in Python and R as Jupyter notebooks and as command-line scripts.
+This project performs a linear regression analysis on `regression_data.csv`, modeling **Salary** as a function of **YearsExperience**. The same workflow is implemented in Python and R as Jupyter notebooks and as command-line scripts.
 
 ## Dataset
 
@@ -12,8 +12,8 @@ The CSV file is read from:
 
 Columns used in the examples:
 
-| Column            | Role        |
-|-------------------|-------------|
+| Column            | Role          |
+|-------------------|---------------|
 | `YearsExperience` | Predictor (x) |
 | `Salary`          | Response (y)  |
 
@@ -29,7 +29,8 @@ conda activate 7030_class_2
 
 - pandas
 - matplotlib
-- scikit-learn (`LinearRegression`)
+- scipy (`linregress`)
+- scikit-learn (`mean_squared_error`)
 
 ### R libraries
 
@@ -44,30 +45,16 @@ Kernels configured for Jupyter:
 
 | File | Description |
 |------|-------------|
-| `linear_regression_python.ipynb` | Python analysis with scatter plot, fitted line, and R² |
-| `linear_regression_R.ipynb` | R analysis with ggplot2, fitted line, and `summary(model)` |
+| `linear_model_python.ipynb` | Python analysis with slope, intercept, Pearson's r, MSE, and annotated plot |
+| `linear_model_r.ipynb` | R analysis with the same diagnostics and annotated ggplot2 plot |
 
 Each notebook:
 
 1. Loads the CSV from `../manual/regression_data.csv`
-2. Creates a scatter plot
-3. Fits a linear model
-4. Overlays the regression line
-5. Evaluates the model (R² in Python; full summary in R)
-
-HTML exports:
-
-- `linear_regression_python.html`
-- `linear_regression_R.html`
-
-To regenerate HTML from the notebooks:
-
-```bash
-conda activate 7030_class_2
-cd /users/PAS3421/digh04/assignment_2/ai
-jupyter nbconvert --to html linear_regression_python.ipynb
-jupyter nbconvert --to html linear_regression_R.ipynb
-```
+2. Explains what slope, intercept, correlation, and MSE measure (markdown cells)
+3. Fits a linear model (`Salary` vs `YearsExperience`)
+4. Prints slope, intercept, Pearson's r, and MSE
+5. Displays a scatter plot with the fitted regression line and a text annotation showing the equation and correlation
 
 ## Command-line scripts
 
@@ -76,43 +63,37 @@ Both scripts accept three arguments: `<filename> <x_column> <y_column>`.
 ### Python
 
 ```bash
-python linear_regression_python.py ../manual/regression_data.csv YearsExperience Salary
+python linear_model.py ../manual/regression_data.csv YearsExperience Salary
 ```
 
-- Prints the loaded data and column values
-- Fits `LinearRegression` using the specified columns
-- Saves **`linear_regression_python_output.png`** (red scatter, blue regression line)
-- Prints R² to the terminal
+- Prints slope, intercept, correlation coefficient (Pearson's r), and MSE
+- Saves **`regression_plot_python.png`** (red scatter, blue regression line, equation and r annotated)
 
 ### R
 
 ```bash
-Rscript linear_regression_R.R ../manual/regression_data.csv YearsExperience Salary
+Rscript linear_model.R ../manual/regression_data.csv YearsExperience Salary
 ```
 
-- Prints the loaded data
-- Fits `lm(y ~ x, data)` with the specified columns
-- Saves **`linear_regression_r_output.png`** using ggplot2 (red points, blue regression line)
-- Prints `summary(model)` to the terminal
+- Prints slope, intercept, correlation coefficient (Pearson's r), and MSE
+- Saves **`regression_plot_r.png`** using ggplot2 (red points, blue regression line, equation and r annotated)
 
 ## Output files
 
 | File | Source |
 |------|--------|
-| `linear_regression_python_output.png` | Python script |
-| `linear_regression_r_output.png` | R script |
-| `linear_regression_python.html` | Python notebook export |
-| `linear_regression_R.html` | R notebook export |
+| `regression_plot_python.png` | Python script |
+| `regression_plot_r.png` | R script |
 
 ## Workflow summary
 
 ```
-regression_data.csv
+regression_data.csv (in manual/)
         │
-        ├── linear_regression_python.ipynb  →  linear_regression_python.html
-        ├── linear_regression_R.ipynb       →  linear_regression_R.html
-        ├── linear_regression_python.py     →  linear_regression_python_output.png
-        └── linear_regression_R.R           →  linear_regression_r_output.png
+        ├── linear_model_python.ipynb
+        ├── linear_model_r.ipynb
+        ├── linear_model.py     →  regression_plot_python.png
+        └── linear_model.R      →  regression_plot_r.png
 ```
 
-Both languages should report a similar R² (about 0.79 for this dataset with 10 observations).
+Both languages should report similar values for this dataset (about 8285 slope, 29204 intercept, 0.89 Pearson's r, and MSE near 1.75e7).
